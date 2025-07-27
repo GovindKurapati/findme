@@ -17,14 +17,43 @@ const seedData = [
     activeUsersChange: 15.03,
     inactiveUsersChange: -0.03,
     newSignUpsHourlyData: [
-      { hour: 0, count: 2 }, { hour: 4, count: 5 }, { hour: 8, count: 20 }, { hour: 12, count: 30 }, { hour: 16, count: 40 }, { hour: 20, count: 63 },
+      { hour: 0, count: 30 },
+      { hour: 1, count: 38 },
+      { hour: 2, count: 42 },
+      { hour: 3, count: 40 },
+      { hour: 4, count: 42 },
+      { hour: 5, count: 45 },
+      { hour: 6, count: 42 },
+      { hour: 7, count: 41 },
+      { hour: 8, count: 44 },
+      { hour: 9, count: 48 },
+      { hour: 10, count: 50 }
     ],
     activeUsersHourlyData: [
-      { hour: 0, count: 2 }, { hour: 4, count: 5 }, { hour: 8, count: 20 }, { hour: 12, count: 30 }, { hour: 16, count: 40 }, { hour: 20, count: 63 },
-
+      { hour: 0, count: 30 },
+      { hour: 1, count: 38 },
+      { hour: 2, count: 42 },
+      { hour: 3, count: 40 },
+      { hour: 4, count: 42 },
+      { hour: 5, count: 45 },
+      { hour: 6, count: 42 },
+      { hour: 7, count: 42 },
+      { hour: 8, count: 44 },
+      { hour: 9, count: 48 },
+      { hour: 10, count: 50 }
     ],
     inactiveUsersHourlyData: [
-      { hour: 0, count: 400 }, { hour: 4, count: 550 }, { hour: 8, count: 300 }, { hour: 12, count: 250 }, { hour: 16, count: 200 }, { hour: 20, count: 100 },
+      { hour: 0, count: 50 },
+      { hour: 1, count: 55 },
+      { hour: 2, count: 60 },
+      { hour: 3, count: 55 },
+      { hour: 4, count: 53 },
+      { hour: 5, count: 55 },
+      { hour: 6, count: 53 },
+      { hour: 7, count: 51 },
+      { hour: 8, count: 45 },
+      { hour: 9, count: 40 },
+      { hour: 10, count: 30 }
     ],
     peakActivity: { time: "20:00", users: 2500 },
     lowestActivity: { time: "04:00", users: 300 },
@@ -136,19 +165,19 @@ async function seed() {
   try {
     await mongoose.connect(MONGODB_URI, { dbName: "findme" });
     console.log("Connected to MongoDB");
-    
+
     // Clear existing data
     await UserStats.deleteMany({});
     await AppPerformance.deleteMany({});
     await SystemHealth.deleteMany({});
     await ServerUsage.deleteMany({});
-    
+
     // Insert new data
     await UserStats.insertMany(seedData);
     await AppPerformance.insertMany(appPerformanceData);
     await SystemHealth.insertMany(systemHealthData);
     await ServerUsage.insertMany(serverUsageData);
-    
+
     console.log("UserStats, AppPerformance, SystemHealth, and ServerUsage data seeded!");
   } catch (err) {
     console.error(err);

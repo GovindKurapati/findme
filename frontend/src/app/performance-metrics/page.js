@@ -91,20 +91,20 @@ export default function Dashboard() {
             className="rounded-xl p-1 w-12 h-12 object-cover"
           />
           <div>
-            <p className="font-medium">Devanshi Chitalia</p>
-            <p className="text-sm text-gray-600">Owner</p>
+            <p className="text-xl font-semibold">Devanshi Chitalia</p>
+            <p className="text-md font-extralight">Owner</p>
           </div>
         </div>
       </div>
 
       <section className="p-10">
-        <h1 className="text-2xl font-bold text-[#2E2A2A] mb-6">Overview</h1>
+        <h1 className="text-3xl font-semibold text-[#2E2A2A] mb-16">Overview</h1>
 
 
         {/* Users Section */}
         <section>
-          <h2 className="text-lg font-semibold mb-6">Users</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-20 mb-6">
+          <h2 className="text-xl font-semibold mb-6">Users</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 xl:gap-20 mb-6">
             <MetricCard
               title="New Sign-Ups"
               value={userStats?.newSignUps}
@@ -140,9 +140,9 @@ export default function Dashboard() {
         </section>
 
         {/* App Performance Section */}
-        <section>
-          <h2 className="text-lg font-semibold mb-4">App Performance</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-20 mb-6">
+        <section className="mb-16">
+          <h2 className="text-xl font-semibold mb-8">App Performance</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 xl:gap-20 mb-6">
             <PerformanceCard
               title="Average Response Time"
               value={appPerformance?.averageResponseTime || 0}
@@ -163,9 +163,9 @@ export default function Dashboard() {
         </section>
 
         <section>
-          <h2 className="text-lg font-semibold mb-6">System Health</h2>
+          <h2 className="text-xl font-semibold mb-8">System Health</h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-8 xl:gap-20 mb-14">
             {/* System Usage Chart */}
             <PieChart
               data={systemUsageData}
@@ -183,7 +183,7 @@ export default function Dashboard() {
             />
           </div>
 
-          <div className="bg-white rounded-lg shadow-sm p-6 mb-8 mb-14">
+          <div className="bg-white rounded-2xl shadow-sm p-6 mb-8 mb-14">
             <h2 className="text-lg font-normal text-gray-900">Server Usage</h2>
             <p className="text-sm font-normal text-gray-900 mb-6">By Country</p>
 
@@ -194,11 +194,16 @@ export default function Dashboard() {
                     dataKey="country"
                     axisLine={false}
                     tickLine={false}
-                    tick={{ fontSize: 12, fill: '#6B7280' }}
+                    tick={{ 
+                      fontSize: isMobile ? 10 : 14, 
+                      fill: '#374151', 
+                      fontWeight: '400',
+                    }}
                     angle={isMobile ? -45 : 0}
                     textAnchor={isMobile ? "end" : "middle"}
                     height={isMobile ? 60 : undefined}
                     interval={0}
+                    dy={ isMobile ? 0 : 10}
                   />
                   <YAxis hide />
                   <Bar dataKey="usage" radius={[8, 8, 8, 8]}>
@@ -211,7 +216,7 @@ export default function Dashboard() {
             </div>
           </div>
           {/* State Chart */}
-          <div className="bg-white rounded-lg shadow-sm p-6">
+          <div className="bg-white rounded-2xl shadow-sm p-6">
             <h2 className="text-lg font-normal text-gray-900">Server Usage</h2>
             <p className="text-sm font-normal text-gray-900 mb-6">By State</p>
 
@@ -228,11 +233,16 @@ export default function Dashboard() {
                         dataKey="stateCode"
                         axisLine={false}
                         tickLine={false}
-                        tick={{ fontSize: 12, fill: '#6B7280' }}
+                        tick={{ 
+                          fontSize: isMobile ? 10 : 14, 
+                          fill: '#374151', 
+                          fontWeight: '400',
+                        }}
                         angle={isMobile ? -45 : 0}
                         textAnchor={isMobile ? "end" : "middle"}
                         height={isMobile ? 60 : undefined}
                         interval={0}
+                        dy={ isMobile ? 0 : 10}
                       />
                       <YAxis hide />
                       <Bar dataKey="usage" radius={[8, 8, 8, 8]}>
@@ -249,9 +259,9 @@ export default function Dashboard() {
                   <button
                     onClick={handlePrevPage}
                     disabled={currentPage === 1}
-                    className={`p-2 rounded-md ${currentPage === 1
-                      ? 'text-gray-300 cursor-not-allowed'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                    className={`p-2 rounded-md text-[#1814F3] ${currentPage === 1
+                      ? 'cursor-not-allowed text-gray-300'
+                      : 'hover:bg-gray-100 cursor-pointer'
                       }`}
                   >
                     <ChevronLeft size={20} />
@@ -264,9 +274,9 @@ export default function Dashboard() {
                         <button
                           key={page}
                           onClick={() => setCurrentPage(page)}
-                          className={`w-8 h-8 rounded-md text-sm font-medium ${currentPage === page
-                            ? 'bg-blue-500 text-white'
-                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                          className={`w-8 h-8 rounded-md text-sm text-[#1814F3] cursor-pointer ${currentPage === page
+                            ? 'font-bold text-blue'
+                            : 'hover:bg-gray-100 font-light'
                             }`}
                         >
                           {page}
@@ -278,9 +288,9 @@ export default function Dashboard() {
                   <button
                     onClick={handleNextPage}
                     disabled={currentPage === totalPages}
-                    className={`p-2 rounded-md ${currentPage === totalPages
-                      ? 'text-gray-300 cursor-not-allowed'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                    className={`p-2 rounded-md text-[#1814F3] ${currentPage === totalPages
+                      ? 'cursor-not-allowed text-gray-300'
+                      : 'hover:bg-gray-100 cursor-pointer'
                       }`}
                   >
                     <ChevronRight size={20} />

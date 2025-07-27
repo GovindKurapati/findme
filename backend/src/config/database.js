@@ -4,13 +4,6 @@ require("dotenv").config();
 
 const connectDB = async () => {
   try {
-    const options = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      maxPoolSize: 10,
-      serverSelectionTimeoutMS: 5000,
-      socketTimeoutMS: 45000,
-    };
 
     await mongoose.connect(process.env.MONGODB_URI, { dbName: "findme" });
     console.log("MongoDB connected successfully");

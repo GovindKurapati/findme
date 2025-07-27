@@ -30,53 +30,44 @@ export default function MetricCard({
     };
 
     return (
-        <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-            <div className="flex w-full justify-between items-center mb-4 h-20">
-                <div className="flex-1">
-                    <h3 className="text-gray-600 text-sm font-medium mb-1">{title}</h3>
+        <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+            <h3 className="text-base font-light mb-2">{title}</h3>
+
+            <div className="flex w-full justify-between items-start mb-3 h-16">
+
+                <div className="flex flex-start flex-col">
                     <p className="text-3xl font-medium text-gray-900">{value}</p>
                     {subtitle && (
-                        <p className="text-gray-500 text-sm mt-1">{subtitle}</p>
+                        <p className="font-light text-sm mt-1 mb-1">{subtitle}</p>
                     )}
                 </div>
-                <div className={`flex flex-col items-end gap-1 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
-                    <span className="text-sm font-medium">{change}</span>
-                    {isPositive ? (
-                        <TrendingUp className="w-4 h-4" />
-                    ) : (
-                        <TrendingDown className="w-4 h-4" />
-                    )}
+                <div className={`flex flex-col items-end gap-1 font-light relative`}>
+                    <span className="mr-7 text-base font-light ">{isPositive ? '+' : ''}{change}%</span>
+                    <span className='absolute top-5 transform scale-x-45 right-[-10]'>
+                        {isPositive ? (
+                            <TrendingUp className="w-8 h-8 stroke-[1.5]" />
+                        ) : (
+                            <TrendingDown className="w-8 h-8 stroke-[1.5]" />
+                        )}
+                    </span>
+
+
                 </div>
             </div>
 
-            <div className="h-50 mb-4 relative">
+            <div className="h-50 mb-4 relative mb-6">
                 <div className="absolute inset-0 z-10">
                     <ResponsiveContainer width="70%" height="100%" zIndex={1}>
-                        <AreaChart width="80%" data={transformedChartData} margin={{ top: 50, right: 8, left: 5, bottom: 5 }}>
+                        <AreaChart width="80%" data={transformedChartData} margin={{ top: 20, right: 8, left: 10, bottom: 0 }}>
                             <defs>
-                                <linearGradient id={`gradient-${title.replaceAll(" ", "")}`} x1="0" y1="1" x2="0" y2="0">
-                                    <stop offset="0%" stopColor="#ffffff" stopOpacity={0.4} />
-                                    <stop offset="50%" stopColor="#ADB7F9" stopOpacity={0.5} />
-                                    <stop offset="100%" stopColor="#B1B9F8" stopOpacity={0.9} />
-
+                                <linearGradient id={`gradient-${title.replaceAll(" ", "")}`} x1="0" y1="0" x2="0" y2="1.5">
+                                    <stop offset="0%" stopColor="#344BFD" stopOpacity={0.8} />
+                                    <stop offset="50%" stopColor="#ADB7F9" stopOpacity={0.4} />
+                                    <stop offset="100%" stopColor="#ffffff" stopOpacity={0.1} />
                                 </linearGradient>
                             </defs>
                             <XAxis hide />
-                            <YAxis hide domain={['dataMin - 10', 'dataMax + 10']} />
-
-                            {/* Horizontal reference lines at top and bottom */}
-                            <ReferenceLine
-                                y="dataMax + 10"
-                                stroke="#B1B1B1"
-                                strokeWidth={1}
-                                strokeDasharray="2 2"
-                            />
-                            <ReferenceLine
-                                y="dataMin - 10"
-                                stroke="#B1B1B1"
-                                strokeWidth={1}
-                                strokeDasharray="2 2"
-                            />
+                            <YAxis hide />
 
 
                             <Area
@@ -107,7 +98,7 @@ export default function MetricCard({
                         </AreaChart>
                     </ResponsiveContainer>
                 </div>
-                <div className="absolute top-0 left-[68%] mr-20 h-full w-px bg-gray-300 z-0" />
+                <div className="absolute top-0 left-[67%] xl:left-[68%] mr-20 h-full w-[0.5px] bg-[#344BFD] z-0" />
 
 
                 {/* Horizontal lines - top and bottom */}
@@ -115,9 +106,9 @@ export default function MetricCard({
                 <div className="absolute left-2 right-2 bottom-0 h-px bg-gray-300"></div>
             </div>
 
-            <div className="text-md text-gray-500 space-y-1">
-                <div className="mb-4">Peak Activity: {peakActivityUsers} at {convertTo12Hour(peakActivityTime)}</div>
-                <div>Lowest Activity: {lowestActivityUsers} at {convertTo12Hour(lowestActivityTime)}</div>
+            <div className="text-md text-[#767676] space-y-1">
+                <div className="mb-4">Peak Activity: {peakActivityUsers} users at {convertTo12Hour(peakActivityTime)}</div>
+                <div>Lowest Activity: {lowestActivityUsers} users at {convertTo12Hour(lowestActivityTime)}</div>
             </div>
         </div>
     );

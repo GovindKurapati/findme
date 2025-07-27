@@ -11,18 +11,18 @@ export const memoryUsageColors = {
 };
 
 export const countryColors = {
-    'US': '#8B7FE8',
-    'Canada': '#7DD3FC',
-    'Japan': '#1F2937',
-    'India': '#60A5FA',
-    'Mexico': '#93C5FD',
-    'Australia': '#86EFAC',
-    'UK': '#7DD3FC',
-    'France': '#6366F1',
-    'Spain': '#6B7280',
-    'Germany': '#C084FC',
-    'Italy': '#86EFAC',
-    'South Korea': '#60A5FA'
+    'US': '#9F9FF8',
+    'Canada': '#96E2D6',
+    'Japan': '#000000',
+    'India': '#92BFFF',
+    'Mexico': '#AEC7ED',
+    'Australia': '#94E9B8',
+    'UK': '#A4DCFD',
+    'France': '#718EBF',
+    'Spain': '#495057',
+    'Germany': '#CE94E2',
+    'Italy': '#C3E8D3',
+    'South Korea': '#5EA8F8'
 };
 
 export const stateColors = {

@@ -11,19 +11,19 @@ const Legend = ({ data, title, colorMap }) => (
               className="w-4 h-4 rounded-full"
               style={{ backgroundColor: colorMap[entry.unit] || '#6B7280' }}
             />
-            <span className="text-gray-700 font-medium">{entry.unit}</span>
+            <span className="font-medium">{entry.unit}</span>
           </div>
-          <span className="text-gray-600 font-light">{entry.value}%</span>
+          <span className="font-extralight">{entry.value}%</span>
         </div>
       ))}
     </div>
   </div>
 );
 
-export default function PieChart({ 
-  data, 
-  colorMap, 
-  title, 
+export default function PieChart({
+  data,
+  colorMap,
+  title,
   centerText = null,
   centerSubText = null,
   startAngle = 50,
@@ -31,11 +31,17 @@ export default function PieChart({
 }) {
   return (
     <div className="bg-white rounded-2xl p-8 shadow-sm">
-      <h2 className="text-lg font-normal text-gray-900 mb-8">{title}</h2>
+      <h2 className="text-lg font-light mb-8">{title}</h2>
 
       <div className="flex flex-col items-center">
         <div className="w-80 h-80 mb-4 relative">
-          <ResponsiveContainer width="100%" height="100%">
+          {/* Outer shadow effect */}
+          <div className="absolute inset-0 rounded-full shadow-[0_8_40px_rgba(52,75,253,0.08),0_4_20px_rgba(52,75,253,0.12)] z-0"></div>
+
+          {/* Inner shadow effect */}
+          <div className="absolute inset-0 rounded-full shadow-[inset_0_2_15px_rgba(0,0,0,0.15),inset_0_1_8px_rgba(0,0,0,0.08)] z-10"></div>
+
+          <ResponsiveContainer width="100%" height="100%" className="relative z-20">
             <RechartsPieChart>
               <Pie
                 data={data}
@@ -59,7 +65,7 @@ export default function PieChart({
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <div className="text-2xl font-medium text-gray-900">{centerText}</div>
               {centerSubText && (
-                <div className="text-xs text-gray-500 font-light mt-1">{centerSubText}</div>
+                <div className="text-xs font-extralight mt-1">{centerSubText}</div>
               )}
             </div>
           )}
