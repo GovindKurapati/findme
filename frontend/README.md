@@ -34,7 +34,7 @@ A Next.js dashboard application for performance metrics visualization.
 npm run dev
 ```
 
-The application will start on `http://localhost:3000`
+The application will start on `http://localhost:3000/performance-metrics`
 
 ## Available Scripts
 

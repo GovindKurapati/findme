@@ -99,3 +99,48 @@ MONGODB_URI=<ADD_MONGODB_URI>
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:4000
 ```
+
+## Development Approach & Implementation
+
+### Key Decisions
+- **Monorepo Structure**: Separate backend and frontend directories for clear separation of concerns
+- **Modern Tech Stack**: Next.js 15 with App Router for frontend, Express.js with MongoDB for backend
+- **State Management**: Redux Toolkit for centralized state management with async thunks for API calls
+- **Environment Configuration**: Centralized API configuration using environment variables
+- **Responsive Design**: Mobile-first approach with Tailwind CSS for consistent styling
+
+### Implementation Highlights
+- **Real-time Data Visualization**: Interactive charts using Recharts library
+- **API-First Design**: RESTful API endpoints with proper error handling
+- **Component Architecture**: Reusable components for metrics cards and charts
+- **Database Design**: MongoDB with Mongoose for flexible data modeling
+
+### Assumptions
+- Used mock data instead of the .csv data
+
+### Known Limitations
+- **Real-time Updates**: No WebSocket implementation for live updates
+- **Authentication**: No user authentication system implemented
+- **Data Validation**: Basic validation on API endpoints
+- **Error Handling**: Basic error handling in place
+
+## Implementation Report
+
+### Features Implemented
+✅ **Dashboard Overview**: Complete performance metrics dashboard  
+✅ **User Statistics**: New sign-ups, active users, inactive users tracking  
+✅ **App Performance**: Response time, error rate, uptime monitoring  
+✅ **System Health**: CPU usage, memory usage visualization  
+✅ **Server Usage**: Geographic distribution by country and state  
+✅ **Interactive Charts**: Bar charts, pie charts with responsive design  
+✅ **Mobile Responsive**: Optimized for mobile and desktop devices  
+✅ **Environment Configuration**: Easy deployment to different environments  
+
+### Technical Considerations
+- **Performance**: Optimized chart rendering with Recharts
+- **Scalability**: Modular architecture for easy feature additions
+- **Maintainability**: Clear separation between frontend and backend
+
+### Trade-offs Made
+- **Simplicity over Complexity**: Chose straightforward API structure over advanced features
+- **Development Speed**: Used established libraries (Recharts, Lucide, Redux Toolkit) over custom solutions
