@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { API_ENDPOINTS } from './config';
 
 export const fetchSystemHealth = createAsyncThunk(
   'systemHealth/fetchSystemHealth',
   async () => {
-    const res = await fetch('http://localhost:4000/api/performance-metrics/system-health');
+    const res = await fetch(API_ENDPOINTS.SYSTEM_HEALTH);
     const data = await res.json();
-    return data; // returns a single object
+    return data;
   }
 );
 

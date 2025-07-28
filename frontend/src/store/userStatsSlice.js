@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { API_ENDPOINTS } from './config';
 
 export const fetchUserStats = createAsyncThunk(
   'userStats/fetchUserStats',
   async () => {
-    const res = await fetch('http://localhost:4000/api/performance-metrics/user-stats');
+    const res = await fetch(API_ENDPOINTS.USER_STATS);
     const data = await res.json();
     return data;
   }

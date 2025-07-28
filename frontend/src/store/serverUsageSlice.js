@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { API_ENDPOINTS } from './config';
 
 export const fetchServerUsage = createAsyncThunk(
   'serverUsage/fetchServerUsage',
   async () => {
-    const res = await fetch('http://localhost:4000/api/performance-metrics/server-usage');
+    const res = await fetch(API_ENDPOINTS.SERVER_USAGE);
     const data = await res.json();
-    return data; // returns a single object
+    return data;
   }
 );
 
