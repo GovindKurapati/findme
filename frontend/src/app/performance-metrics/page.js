@@ -145,7 +145,7 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 xl:gap-20 mb-6">
             <PerformanceCard
               title="Average Response Time"
-              value={appPerformance?.averageResponseTime || 0}
+              value={appPerformance?.averageResponseTime + " ms" || 0}
               change={appPerformance?.responseTimeChange || 0}
             />
             <PerformanceCard
@@ -155,7 +155,7 @@ export default function Dashboard() {
             />
             <PerformanceCard
               title="Uptime"
-              value={appPerformance?.uptime || 0}
+              value={appPerformance?.uptime + "%" || 0}
               change={appPerformance?.uptimeChange || 0}
               subtitle={appPerformance?.uptimePeriod || "past 30 days"}
             />
