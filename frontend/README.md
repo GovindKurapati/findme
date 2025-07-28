@@ -2,6 +2,20 @@
 
 A Next.js dashboard application for performance metrics visualization.
 
+## Screenshots
+
+### Dashboard Overview
+![Performance Metrics Dashboard](public/dashboard-overview.png)
+*Complete performance metrics dashboard with user statistics, app performance, and system health monitoring*
+
+### App Performance & System Health
+![App Performance and System Health](public/app-performance-system-health.png)
+*App performance metrics (response time, error rate, uptime) and system health visualization with interactive charts*
+
+### Server Usage Analytics
+![Server Usage Analytics](public/server-usage-analytics.png)
+*Geographic server usage distribution by country and state with interactive bar charts and pagination*
+
 ## Prerequisites
 
 - Node.js (v16 or higher)
