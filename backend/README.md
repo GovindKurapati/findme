@@ -19,7 +19,7 @@ A Node.js/Express backend API for the FindMe performance metrics dashboard.
    Create a `.env` file in the root directory:
    ```env
    PORT=4000
-   MONGODB_URI=mongodb://localhost:27017/findme
+   MONGODB_URI=<ADD_MONGODB_URI>
    ```
 
 3. **Database Setup**
